@@ -18,4 +18,8 @@ public class UserDao {
     public Map<String, User> getUsers() {
         return users;
     }
+
+    public User findUser(String name) {
+        return users.get(name);
+    }
 }

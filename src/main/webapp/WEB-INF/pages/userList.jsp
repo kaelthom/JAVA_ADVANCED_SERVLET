@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>User</title>
+    <title>redirected from user servlet</title>
     <h1>Hello</h1>
-    <h2>Name is ${user.lastname} ${user.firstname}, salary is ${user.salary}</h2>
+    <h2>It will show the list of users</h2>
 </head>
 <body>
 

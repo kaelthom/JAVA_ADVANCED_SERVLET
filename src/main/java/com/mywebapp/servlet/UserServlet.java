@@ -17,12 +17,30 @@ public class UserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String idFromRequest = request.getParameter("id");
+        System.out.println("param id is : " + idFromRequest);
+        String action = request.getParameter("action");
         UserDao userDao = new UserDao();
 
-        request.setAttribute("firstUserInUserDao", userDao.getUsers().get("John"));
-
-        request.setAttribute("user", new User("Jean", "Paul", 2000));
-        request.setAttribute("name", "John Doe");
-        request.getRequestDispatcher("/WEB-INF/pages/showUser.jsp").forward(request, response);
+        User user = null;
+        if (action==null) {
+            request.getRequestDispatcher("/WEB-INF/pages/userError.jsp").forward(request, response);
+        } else {
+            switch (action) {
+                case "detail":
+                    if (idFromRequest != null) {
+                        user = userDao.findUser(idFromRequest);
+                        request.setAttribute("user", user);
+                        request.getRequestDispatcher("/WEB-INF/pages/showUser.jsp").forward(request, response);
+                    }
+                    break;
+                case "list":
+                    request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + action);
+            }
+        }
     }
 }
