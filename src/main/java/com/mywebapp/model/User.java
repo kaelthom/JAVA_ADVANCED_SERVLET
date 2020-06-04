@@ -43,4 +43,8 @@ public class User {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
+    public String getLinkFromUserList() {
+        return "/MyWebApp/user-details?action=detail&id=" + lastname;
+    }
 }

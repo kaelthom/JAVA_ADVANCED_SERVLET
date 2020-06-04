@@ -36,6 +36,7 @@ public class UserServlet extends HttpServlet {
                     }
                     break;
                 case "list":
+                    request.setAttribute("users", userDao.getUsers().values());
                     request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
                     break;
                 default:
