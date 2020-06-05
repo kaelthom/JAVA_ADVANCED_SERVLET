@@ -1,11 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <title>redirected from user servlet</title>
+<jsp:include page="../templates/header.jsp"></jsp:include>
     <h1>Hello</h1>
     <h2>You made a mistake there's no action specified in request</h2>
-</head>
-<body>
 
 </body>
 </html>
