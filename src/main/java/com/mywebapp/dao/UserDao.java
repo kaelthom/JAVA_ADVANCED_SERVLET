@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserDao {
+
+    static private UserDao instance;
     private Map<String, User> users = new HashMap<String, User>() {
         {
             put("John", new User("John", "Doe", 200));
@@ -15,11 +17,24 @@ public class UserDao {
         }
     };
 
+    private UserDao() {
+    }
+
+    static public UserDao getInstance() {
+        if (instance == null) {
+            instance = new UserDao();
+        }
+        return instance;
+    }
     public Map<String, User> getUsers() {
         return users;
     }
 
     public User findUser(String name) {
         return users.get(name);
+    }
+
+    public User addUser(User user) {
+        return users.put(user.getLastname(), user);
     }
 }

@@ -13,6 +13,11 @@
         </c:forEach>
     </ul>
 
+    <form action = "user-details">
+        Add a new user : <input type="hidden" name="action" value="add"/>
+        <input type="submit"/>
+    </form>
+
 
 </head>
 <body>
