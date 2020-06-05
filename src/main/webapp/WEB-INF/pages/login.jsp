@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="loginPathUrl" value="/login"/>
 <c:url var="logoutPathUrl" value="/login?action=logout"/>
-<c:if test="${!sessionScope.userLogged}">
+<c:if test="${sessionScope.userLogged==null}">
     <form method="post" action="${loginPathUrl}">
         Mail : <input type="text" name="mail" placeholder="Your mail"/> <br>
         Last Name : <input type="text" name="username" placeholder="Your username"/> <br>

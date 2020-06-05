@@ -30,14 +30,9 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/error");
                 }
                 break;
-            case "logout":
-                request.getSession().invalidate();
-                request.getSession().setAttribute("userLogged", false);
-                response.sendRedirect(request.getContextPath() + "/login");
-                break;
             case "create":
                 userDao.addUser(new User(email, username));
-                response.sendRedirect(request.getContextPath() + "/user-details?action=detail");
+                response.sendRedirect(request.getContextPath() + "/user-details?action=list");
                 break;
 
             default:
@@ -47,6 +42,21 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        if(action!=null) {
+            switch (action) {
+                case "logout":
+                    request.getSession().invalidate();
+                    response.sendRedirect(request.getContextPath() + "/login");
+                    break;
+
+                default:
+                    response.sendRedirect(request.getContextPath() + "/error");
+            }
+        } else {
+            request.getSession().invalidate();
+            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+        }
+
     }
 }
