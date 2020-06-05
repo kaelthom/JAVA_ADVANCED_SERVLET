@@ -3,7 +3,14 @@ package com.mywebapp.model;
 public class User {
     private String lastname;
     private String firstname;
+    private String email;
     private int salary;
+
+    public User(String email, String lastname) {
+        this.email = email;
+        this.lastname = lastname;
+        this.firstname = "";
+    }
 
     @Override
     public String toString() {
@@ -46,5 +53,13 @@ public class User {
 
     public String getLinkFromUserList() {
         return "/MyWebApp/user-details?action=detail&id=" + lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

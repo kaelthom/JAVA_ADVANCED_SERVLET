@@ -49,9 +49,9 @@ public class UserServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
                     break;
                 case "add":
-                    request.getSession().setAttribute("contextPathUrl", "/sessionbadUrl");
-                    request.getServletContext().setAttribute("contextPathUrl", request.getServletContext().getInitParameter("contextPathUrl"));
-                    request.setAttribute("contextPathUrl", "/requestbadurl");
+                    request.getSession().setAttribute("pathUrl", "/sessionbadUrl");
+                    request.getServletContext().setAttribute("pathUrl", request.getServletContext().getInitParameter("contextPathUrl"));
+                    request.setAttribute("pathUrl", "/requestbadurl");
                     request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
                     break;
                 default:
