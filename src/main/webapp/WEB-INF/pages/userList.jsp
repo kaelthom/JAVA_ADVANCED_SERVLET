@@ -23,8 +23,4 @@
 
     <a href="?action=add">Add an user</a>
 
-</head>
-<body>
-
-</body>
-</html>
+<jsp:include page="../templates/footer.jsp"></jsp:include>
